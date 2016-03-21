@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('testJunior')
+        .module('junior')
         .directive('myApp', Directive);
 
     function Directive() {
@@ -12,7 +12,7 @@
         //
         var directive = {
             bindToController: true,
-            controller: ControllerController,
+            controller: "MenuCtrl",
             controllerAs: 'vm',
             link: link,
             restrict: 'E',
@@ -21,12 +21,9 @@
             }
         };
         return directive;
-        
+
         function link(scope, element, attrs) {
         }
     }
     /* @ngInject */
-    function ControllerController () {
-        
-    }
 })();

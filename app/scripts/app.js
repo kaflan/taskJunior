@@ -2,7 +2,7 @@
 (function() {
     'use strict';
 
-    angular.module('testJunior', [
-        'ngMaterial', 'ngResource', 'ngRoute', 'ngSanitize', 'ngMessages'
+    angular.module('junior', [
+        'ngMaterial', 'ngMessages', 'material.svgAssetsCache'
     ]);
 })();
