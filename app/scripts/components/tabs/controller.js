@@ -49,6 +49,9 @@
     $scope.postAdd = function(users){
       users.push($scope.user);
     };
+    $scope.likeAdd = function(like){
+      like.push($scope.user);
+    }
     GetUsers.getData(function(res) {
       $scope.users = [];
       var users = res[0];

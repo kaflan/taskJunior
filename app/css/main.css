@@ -69,6 +69,12 @@ md-card-content>ul>li{
       width: 100%;
       left: 0px;
 }
+.likes{
+  padding: 20px;
+  margin-top: 5px;
+  border: solid;
+  margin-bottom: 2px;
+}
 md-card-footer{
   background: #F44336;
 }

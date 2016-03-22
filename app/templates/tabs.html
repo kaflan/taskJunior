@@ -39,10 +39,6 @@
           <input  required="" name="comment" ng-model="user.comment">
         </md-input-container>
         <md-button ng-if="hideComment" ng-disabled="user.comment === ''" ng-click="postAdd(user.comments)">Post</md-button>
-         <div class="" ng-if="!hideComment" ng-click="likes()">
-          <md-button  ng-hide="like">like</md-button>
-          <md-button ng-show="like" >Unlike</md-button>
-        </div>
         </div>
         </md-card-footer>
       </md-card>
@@ -53,18 +49,20 @@
 
 <script type="text/ng-template" id="two.tpl.html">
   <div flex="100" id="viewTwo">
+    <div class="" ng-if="user.likes.length === 0">
+      <p>
+        no likes
+      </p>
+    </div>
    <div class="likes" ng-repeat="like in user.likes">
      <h3>
        {{like.username || "Unregistered user"}}
      </h3>
      <img ng-src="{{like.avatar}}" alt="No image" />
      <i class="fa fa-trash fa-5" ng-click="deletePost($index, user.likes)"></i>
-     <p>
-       <i class="fa fa-trash fa-5"></i>
-     </p>
      <md-card class="button" ng-show="button">
        <md-card-footer>
-        <div class="" ng-if="!hideComment" ng-click="likes(user.likes)">
+        <div class="" ng-if="!hideComment" ng-click="likeAdd(user.likes)">
          <md-button  ng-hide="mylike">like</md-button>
          <md-button ng-show="mylike" >Unlike</md-button>
        </div>
