@@ -29,6 +29,51 @@
 body{
       background: #eee;
 }
+md-card-content>ul{
+  list-style: none;
+   padding: 0;
+   margin: 0
+}
+.comment {
+  text-align: center;
+  font-size: 30px;
+  color: #212121;
+}
+
+md-card-content>ul>li{
+    border: 1px solid #000;
+    border-bottom-width: 0;
+    margin: 3px 3px 0px 3px;
+    padding: 5px 5px 0px 5px;
+    background-color: #CCC;
+    color: #696969;
+    display: -webkit-inline-box;
+    width: 48%;
+}
+.active {
+    background-color: #FFF;
+    color: #000;
+}
+md-card-footer{
+  background: #F44336;
+}
+md-input-container{
+  background: #fff;
+}
+md-button{
+  background: #D32F2F;
+}
+md-button, [ng-if="!hideComment"]{
+  background: #fff;
+  width: 100%;
+}
+[ng-click="likes()"]{
+  text-align: center;
+}
+#mainView {
+    border: 1px solid black;
+    padding: 0 1em;
+}
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.

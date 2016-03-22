@@ -1,3 +1,12 @@
+
+(function() {
+    'use strict';
+
+    angular.module('junior', [
+        'ngMaterial', 'ngMessages', 'material.svgAssetsCache','ngResource'
+    ]);
+})();
+
 (function() {
 // 'use strict';
 
@@ -5,7 +14,7 @@
         .module('junior')
         .factory('GetUsers', function($resource) {
           return $resource('database/users.json',{ }, {
-            getData: {method:'GET', isArray: true}
+            getData: {method:'GET', isArray: false}
           });
         })
 

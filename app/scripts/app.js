@@ -3,6 +3,6 @@
     'use strict';
 
     angular.module('junior', [
-        'ngMaterial', 'ngMessages', 'material.svgAssetsCache'
+        'ngMaterial', 'ngMessages', 'material.svgAssetsCache','ngResource'
     ]);
 })();

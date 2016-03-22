@@ -16,19 +16,32 @@
 
 
 
-  function AppCtrl($scope) {
-    $scope.data = {
-      selectedIndex: 0,
-      secondLocked: true,
-      secondLabel: "Item Two",
-      bottom: false
+  function AppCtrl($scope, GetUsers) {
+    $scope.user = {
+      comment: ''
     };
-    $scope.next = function() {
-      $scope.data.selectedIndex = Math.min($scope.data.selectedIndex + 1, 2);
-    };
-    $scope.previous = function() {
-      $scope.data.selectedIndex = Math.max($scope.data.selectedIndex - 1, 0);
-    };
+    $scope.tabs = [{
+           title: 'Comments',
+           url: 'one.tpl.html'
+       }, {
+           title: 'Likes',
+           url: 'two.tpl.html'
+       }];
+   $scope.currentTab = 'one.tpl.html';
+   $scope.hideComment = true;
+   $scope.onClickTab = function (tab) {
+       $scope.currentTab = tab.url;
+       $scope.hideComment = !$scope.hideComment;
+   }
+   $scope.isActiveTab = function(tabUrl) {
+       return tabUrl == $scope.currentTab;
+   }
+   $scope.likes = function(){
+     $scope.like = !$scope.like;
+   };
+   console.log(GetUsers.getData(function(data){
+     console.log(data);
+   }));
   }
 
 
