@@ -1,12 +1,15 @@
 (function() {
-// 'use strict';
+    // 'use strict';
 
     angular
-        .module('junior')
-        .factory('GetUsers', function($resource) {
-          return $resource('database/users.json',{ }, {
-            getData: {method:'GET', isArray: true}
-          });
-        })
+      .module('junior')
+      .factory('GetUsers', function($resource) {
+        return $resource('database/users.json', {}, {
+          getData: {
+            method: 'GET',
+            isArray: true
+          }
+        });
+    });
 
-})();
+      })();

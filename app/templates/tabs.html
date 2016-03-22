@@ -1,42 +1,76 @@
 <div class="tabsdemoDynamicHeight" ng-cloak>
   <md-content >
-    <md-card flex-gt-md="100" flex-gt-sm="100" class="md-default-theme">
-      <md-card-content>
+    <md-card flex-gt-md="100" flex-gt-sm="100" class="md-default-theme" ng-repeat="user in users">
+      <md-card-content >
+          <img class="md-card-image" ng-src="{{user.avatar}}" alt="image caption">
+          <h1>{{user.username }}</h1>
+          <h3>{{user.status}}</h3>
         <ul>
-          <li ng-repeat="tab in tabs" ng-class="{active:isActiveTab(tab.url)}" ng-click="onClickTab(tab)">{{tab.title}}</li>
+          <li ng-repeat="tab in tabs" ng-class="{active:isActiveTab(tab.url)}" ng-click="onClickTab(tab)" >{{tab.title}}</li>
         </ul>
         <div id="mainView">
           <div ng-include="currentTab"></div>
         </div>
 
       </md-card-content>
-      <md-card-footer>
-
-      <div class="md-actions" layout="row" layout-align="center">
-        <md-input-container ng-if="hideComment" class="md-block flex-gt-sm md-input-invalid" flex-gt-sm=""  >
-        <label class="comment">Comment</label>
-        <input  required="" name="comment" ng-model="user.comment">
-      </md-input-container>
-      <md-button ng-if="hideComment" ng-disabled="user.comment === ''" >Post</md-button>
-       <div class="" ng-if="!hideComment" ng-click="likes()">
-        <md-button  ng-hide="like">like</md-button>
-        <md-button ng-show="like" >Unlike</md-button>
-      </div>
-      </div>
-      </md-card-footer>
     </md-card>
+
   </md-content>
 </div>
 <script type="text/ng-template" id="one.tpl.html">
-  <div flex="50" id="viewOne">
-    <h1>View One</h1>
-    <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc.</p>
+  <div flex="100" id="viewOne" ng-click="">
+    <div class="" ng-if="user.comments.length === 0">
+      <p>
+        no comments
+      </p>
+    </div>
+    <div class="commentUser" ng-repeat="comment in user.comments" ng-click="commentHide()">
+      <h1 alt="No name">{{comment.username || "Unregistered user"}}  </h1>
+      <img ng-src="{{comment.avatar}}" alt="No image" />
+      <p>
+      {{comment.text}}
+      <i class="fa fa-trash fa-5" ng-click="deletePost($index, user.comments)"></i>
+      </p>
+      <md-card class="button" ng-show="button">
+        <md-card-footer>
+        <div class="md-actions" layout="row" layout-align="center">
+          <md-input-container ng-if="hideComment" class="md-block flex-gt-sm md-input-invalid" flex-gt-sm=""  >
+          <label class="comment">Comment</label>
+          <input  required="" name="comment" ng-model="user.comment">
+        </md-input-container>
+        <md-button ng-if="hideComment" ng-disabled="user.comment === ''" ng-click="postAdd(user.comments)">Post</md-button>
+         <div class="" ng-if="!hideComment" ng-click="likes()">
+          <md-button  ng-hide="like">like</md-button>
+          <md-button ng-show="like" >Unlike</md-button>
+        </div>
+        </div>
+        </md-card-footer>
+      </md-card>
+    </div>
   </div>
+
 </script>
 
 <script type="text/ng-template" id="two.tpl.html">
-  <div flex="50" id="viewTwo">
-    <h1>View Two</h1>
-    <p>Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu.</p>
+  <div flex="100" id="viewTwo">
+   <div class="likes" ng-repeat="like in user.likes">
+     <h3>
+       {{like.username || "Unregistered user"}}
+     </h3>
+     <img ng-src="{{like.avatar}}" alt="No image" />
+     <i class="fa fa-trash fa-5" ng-click="deletePost($index, user.likes)"></i>
+     <p>
+       <i class="fa fa-trash fa-5"></i>
+     </p>
+     <md-card class="button" ng-show="button">
+       <md-card-footer>
+        <div class="" ng-if="!hideComment" ng-click="likes(user.likes)">
+         <md-button  ng-hide="mylike">like</md-button>
+         <md-button ng-show="mylike" >Unlike</md-button>
+       </div>
+       </div>
+       </md-card-footer>
+     </md-card>
+   </div>
   </div>
 </script>

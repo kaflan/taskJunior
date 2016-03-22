@@ -39,7 +39,14 @@ md-card-content>ul{
   font-size: 30px;
   color: #212121;
 }
-
+.commentUser{
+  border: solid black 15px;
+  margin-bottom: 20px;
+}
+.fa-5{
+  margin-left: 95%;
+  font-size: 50px;
+}
 md-card-content>ul>li{
     border: 1px solid #000;
     border-bottom-width: 0;
@@ -53,6 +60,14 @@ md-card-content>ul>li{
 .active {
     background-color: #FFF;
     color: #000;
+}
+.button{
+  position: fixed;
+      bottom: 0;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      left: 0px;
 }
 md-card-footer{
   background: #F44336;
